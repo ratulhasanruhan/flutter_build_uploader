@@ -20,7 +20,7 @@ Add this to your Flutter project:
 
 ```yaml
 dev_dependencies:
-  flutter_build_uploader: ^0.2.0
+  flutter_build_uploader: ^0.0.2
 ```
 
 ---
