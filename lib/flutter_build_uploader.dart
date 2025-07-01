@@ -56,11 +56,16 @@ dart run flutter_build_uploader
 pause
 ''');
       print('✅ Script created: flutterapk.bat');
-      print('📁 You can double-click it or run `flutterapk.bat` in CMD next time.');
+      print(
+        '📁 You can double-click it or run `flutterapk.bat` in CMD next time.',
+      );
     }
   }
 }
 
+/// Uploads a file to the file.io temporary file hosting service.
+///
+/// Returns the URL of the uploaded file if successful.
 Future<String?> uploadToFileIo(File file) async {
   final uri = Uri.parse('https://file.io');
   final request = http.MultipartRequest('POST', uri);
@@ -71,6 +76,7 @@ Future<String?> uploadToFileIo(File file) async {
   return data['link'];
 }
 
+/// Opens WhatsApp Web with a pre-filled message.
 void openWhatsAppWeb(String message) {
   final encoded = Uri.encodeComponent(message);
   final url = 'https://web.whatsapp.com/send?text=$encoded';
@@ -90,6 +96,7 @@ class _Metadata {
   _Metadata(this.name, this.version);
 }
 
+/// Extracts app metadata from pubspec.yaml.
 _Metadata _getAppMetadata() {
   final pubspec = File('pubspec.yaml').readAsStringSync();
   final yaml = loadYaml(pubspec);
@@ -98,6 +105,7 @@ _Metadata _getAppMetadata() {
   return _Metadata(name, version);
 }
 
+/// Retrieves the uploader configuration from pubspec.yaml.
 Map _getUploaderConfig() {
   final pubspec = File('pubspec.yaml').readAsStringSync();
   final yaml = loadYaml(pubspec);
