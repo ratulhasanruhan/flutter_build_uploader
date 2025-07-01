@@ -37,7 +37,7 @@ dependencies:
 
 
 executables:
-  flutter_build_uploader: bin/flutter_build_uploader.dart
+  flutter_build_uploader: flutter_build_uploader
 
 
 
