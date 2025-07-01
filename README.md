@@ -7,7 +7,7 @@
 ## ✨ Features
 
 * ✅ Rename APK after build with version and timestamp
-* ☁️ Upload to [file.io](https://www.file.io) and get a shareable link
+* ☁️ Upload to [gofile.io](https://www.gofile.io) and get a shareable link
 * 💬 Optionally open WhatsApp Web with the APK link
 * ⚙️ Configurable using `pubspec.yaml`
 * 🖥️ Auto-generates `flutterapk.bat` on Windows for one-click build & upload
@@ -20,7 +20,7 @@ Add this to your Flutter project:
 
 ```yaml
 dev_dependencies:
-  flutter_build_uploader: ^0.0.2
+  flutter_build_uploader: ^0.0.3
 ```
 
 ---

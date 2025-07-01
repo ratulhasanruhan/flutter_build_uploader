@@ -1,6 +1,6 @@
 name: flutter_build_uploader
 description: "A Flutter CLI tool to simplify your post-build workflow:"
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/ratulhasanruhan/flutter_build_uploader/
 repository: https://github.com/ratulhasanruhan/flutter_build_uploader/
 issue_tracker: https://github.com/ratulhasanruhan/flutter_build_uploader/issues
