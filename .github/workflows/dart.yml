@@ -1,4 +1,4 @@
-name: Flutter Package Quality Checks
+name: Dart Package Checks
 
 on:
   push:
@@ -7,30 +7,29 @@ on:
     branches: [master]
 
 jobs:
-  analyze_and_test:
-    name: Analyze, Test, and Format
+  dart_checks:
+    name: Dart Analyze, Format, Test, Publish Dry Run
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
         with:
-          flutter-version: '3.22.1' # or any version you target
+          sdk: 'stable'
 
       - name: Install Dependencies
-        run: flutter pub get
+        run: dart pub get
 
       - name: Format Check
         run: dart format --output=none --set-exit-if-changed .
 
       - name: Analyze
-        run: flutter analyze
+        run: dart analyze
 
       - name: Run Tests
-        run: flutter test
+        run: dart test
 
       - name: Pub Publish Dry Run
         run: dart pub publish --dry-run
