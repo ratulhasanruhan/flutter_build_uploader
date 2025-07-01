@@ -1,5 +1,5 @@
 name: flutter_build_uploader
-description: "A new Flutter project."
+description: "A Flutter CLI tool to simplify your post-build workflow:"
 version: 0.0.1
 homepage: https://github.com/ratulhasanruhan/flutter_build_uploader/
 repository: https://github.com/ratulhasanruhan/flutter_build_uploader/
@@ -11,7 +11,7 @@ topics:
     - build
     - uploader
     - automation
-    - CI/CD
+    - ci_cd
 
 platforms:
   android:
