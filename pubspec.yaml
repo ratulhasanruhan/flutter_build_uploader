@@ -13,7 +13,7 @@ topics:
     - automation
     - CI/CD
 
-platform:
+platforms:
   - android
   - ios
   - web
