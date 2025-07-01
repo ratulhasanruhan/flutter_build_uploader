@@ -1,0 +1,31 @@
+name: flutter_build_uploader
+description: "A new Flutter project."
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: ^3.8.0
+  flutter: ">=1.17.0"
+
+dependencies:
+  http: ^1.2.0
+  yaml: ^3.1.2
+  path: ^1.9.0
+  intl: ^0.18.1
+
+
+executables:
+  flutter_build_uploader: bin/flutter_build_uploader.dart
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
