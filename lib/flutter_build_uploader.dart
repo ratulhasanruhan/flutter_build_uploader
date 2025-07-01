@@ -31,7 +31,7 @@ void main(List<String> args) async {
   final renamed = await apk.copy(newPath);
   print('📦 APK renamed to: ${renamed.path}');
 
-  print('☁️ Uploading to File.io...');
+  print('☁️ Uploading to GoFile.io...');
   final url = await uploadToFileIo(renamed);
   if (url == null) {
     print('❌ Upload failed.');
