@@ -1,4 +1,4 @@
-# flutter\_build\_uploader
+![flutter_build_uploader](https://github.com/user-attachments/assets/f8aedfe4-81b5-4c5f-b7a1-7fbff94e7ee2)
 
 > A Flutter CLI tool to simplify your post-build workflow: auto-rename APKs, upload to File.io, and share via WhatsApp.
 
