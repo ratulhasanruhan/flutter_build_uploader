@@ -92,7 +92,9 @@ void openWhatsApp(String message) async {
 
   // Replace ${USERNAME} with actual username
   final username = Platform.environment['USERNAME'] ?? '';
-  final paths = possiblePaths.map((p) => p.replaceAll('\${USERNAME}', username));
+  final paths = possiblePaths.map(
+    (p) => p.replaceAll('\${USERNAME}', username),
+  );
 
   String? whatsappPath;
   for (final path in paths) {
