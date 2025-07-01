@@ -9,3 +9,7 @@
 ## 0.0.3
 
 * Changes file.io to gofile.io for file uploads.
+
+## 0.0.4
+
+* Impactful solutiion for auto running commands

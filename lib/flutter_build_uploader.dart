@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:yaml/yaml.dart';
 import 'package:path/path.dart' as p;
 
+/// Main entry point for the Flutter APK build uploader.
 void main(List<String> args) async {
   final config = _getUploaderConfig();
   final isRelease = config['release'] ?? true;
@@ -41,7 +42,7 @@ void main(List<String> args) async {
 
   if (useWhatsapp) {
     print('💬 Opening WhatsApp Web...');
-    openWhatsAppWeb('Here is the new build: $url');
+    openWhatsApp('Here is the new build: $url');
   }
 
   if (Platform.isWindows) {
@@ -77,16 +78,43 @@ Future<String?> uploadToFileIo(File file) async {
 }
 
 /// Opens WhatsApp Web with a pre-filled message.
-void openWhatsAppWeb(String message) {
+/// @param message The message to pre-fill in WhatsApp Web.
+void openWhatsApp(String message) async {
   final encoded = Uri.encodeComponent(message);
-  final url = 'https://web.whatsapp.com/send?text=$encoded';
 
-  if (Platform.isWindows) {
-    Process.run('start', [url], runInShell: true);
-  } else if (Platform.isMacOS) {
-    Process.run('open', [url]);
+  // Common WhatsApp Desktop install path on Windows
+  final possiblePaths = [
+    r'C:\Users\${USERNAME}\AppData\Local\WhatsApp\WhatsApp.exe',
+    r'C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_*',
+    r'C:\Program Files\WhatsApp\WhatsApp.exe',
+    r'C:\Program Files (x86)\WhatsApp\WhatsApp.exe',
+  ];
+
+  // Replace ${USERNAME} with actual username
+  final username = Platform.environment['USERNAME'] ?? '';
+  final paths = possiblePaths.map((p) => p.replaceAll('\${USERNAME}', username));
+
+  String? whatsappPath;
+  for (final path in paths) {
+    if (File(path).existsSync()) {
+      whatsappPath = path;
+      break;
+    }
+  }
+
+  if (whatsappPath != null) {
+    // WhatsApp Desktop found, try to open with message (no official CLI, so just open app)
+    await Process.run(whatsappPath, [], runInShell: true);
   } else {
-    Process.run('xdg-open', [url]);
+    // Fallback to WhatsApp Web
+    final url = 'https://web.whatsapp.com/send?text=$encoded';
+    if (Platform.isWindows) {
+      await Process.run('start', [url], runInShell: true);
+    } else if (Platform.isMacOS) {
+      await Process.run('open', [url]);
+    } else {
+      await Process.run('xdg-open', [url]);
+    }
   }
 }
 
@@ -97,6 +125,7 @@ class _Metadata {
 }
 
 /// Retrieves the app metadata from pubspec.yaml.
+/// Returns an instance of [_Metadata] containing the app name and version.
 _Metadata _getAppMetadata() {
   final pubspec = File('pubspec.yaml').readAsStringSync();
   final yaml = loadYaml(pubspec);
@@ -106,6 +135,7 @@ _Metadata _getAppMetadata() {
 }
 
 /// Retrieves the uploader configuration from pubspec.yaml.
+/// Returns a map containing the configuration options.
 Map _getUploaderConfig() {
   final pubspec = File('pubspec.yaml').readAsStringSync();
   final yaml = loadYaml(pubspec);
