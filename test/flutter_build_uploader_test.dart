@@ -5,7 +5,5 @@ import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 
 void main() {
-  test('uploadToFileIo returns URL on success', () async {
-
-  });
+  test('uploadToFileIo returns URL on success', () async {});
 }

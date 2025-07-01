@@ -69,9 +69,7 @@ pause
 Future<String?> uploadToFileIo(File file) async {
   final uri = Uri.parse('https://upload.gofile.io/uploadfile');
   final request = http.MultipartRequest('POST', uri);
-  request.files.add(await http.MultipartFile.fromPath(
-    'file', file.path,
-  ));
+  request.files.add(await http.MultipartFile.fromPath('file', file.path));
   final response = await request.send();
   final resBody = await response.stream.bytesToString();
   final data = jsonDecode(resBody);
@@ -116,4 +114,3 @@ Map _getUploaderConfig() {
   }
   return {};
 }
-
