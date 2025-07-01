@@ -31,7 +31,7 @@ dart pub global activate flutter_build_uploader
 
 ---
 
-## 🔧 Configuration
+## 🔧 Configuration (optional)
 
 In your `pubspec.yaml`:
 
