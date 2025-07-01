@@ -1,39 +1,91 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+![flutter_build_uploader](https://github.com/user-attachments/assets/f8aedfe4-81b5-4c5f-b7a1-7fbff94e7ee2)
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+> A Flutter CLI tool to simplify your post-build workflow: auto-rename APKs, upload to File.io, and share via WhatsApp.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+---
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+## ✨ Features
 
-## Features
+* ✅ Rename APK after build with version and timestamp
+* ☁️ Upload to [file.io](https://www.file.io) and get a shareable link
+* 💬 Optionally open WhatsApp Web with the APK link
+* ⚙️ Configurable using `pubspec.yaml`
+* 🖥️ Auto-generates `flutterapk.bat` on Windows for one-click build & upload
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+---
 
-## Getting started
+## 📦 Installation
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add this to your Flutter project:
 
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+```yaml
+dev_dependencies:
+  flutter_build_uploader: ^0.2.0
 ```
 
-## Additional information
+---
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+## 🔧 Configuration
+
+Add the following to your `pubspec.yaml`:
+
+```yaml
+flutter_build_uploader:
+  release: true      # true = release, false = debug
+  whatsapp: true     # open WhatsApp Web with the link (optional)
+```
+
+If not set, defaults are:
+
+* `release: true`
+* `whatsapp: true`
+
+---
+
+## 🛠️ Usage
+
+### 🔁 Run manually:
+
+```bash
+flutter build apk
+dart run flutter_build_uploader
+```
+
+### ⚡ Windows users:
+
+On first run, it auto-creates a `flutterapk.bat` file:
+
+```bat
+flutter build apk --release
+dart run flutter_build_uploader
+```
+
+Just double-click this file next time!
+
+---
+
+## 🧪 Example Output
+
+```
+✅ APK found. Renaming...
+📦 APK renamed to: build/exports/myapp-v1.0.2-20250701_2100.apk
+☁️ Uploading to File.io...
+✅ Uploaded! Link: https://file.io/examplelink
+💬 Opening WhatsApp Web...
+```
+
+---
+
+## 🧠 Coming Soon
+
+* Google Drive and Telegram uploads
+* `.aab` support
+* QR code download page
+* GitHub release automation
+* GUI version (with Flutter Desktop)
+
+---
+
+## 📄 License
+
+MIT © Ratul Hasan Ruhan
