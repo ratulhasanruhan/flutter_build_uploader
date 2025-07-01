@@ -14,12 +14,12 @@ topics:
     - CI/CD
 
 platforms:
-  - android
-  - ios
-  - web
-  - linux
-  - macos
-  - windows
+  android:
+  ios:
+  linux:
+  windows:
+  web:
+  macos:
 
 screenshots:
   - description: Flutter Build Uploader
